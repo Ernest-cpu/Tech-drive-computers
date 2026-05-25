@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Drive Computers Ltd - Professional Computer Repair & Sales</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f4f4f4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .logo span {
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0,212,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: moveGrid 20s linear infinite;
+        }
+
+        @keyframes moveGrid {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 span {
+            color: #00d4ff;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: #00d4ff;
+            color: #1a1a2e;
+        }
+
+        .btn-primary:hover {
+            background: #00a8cc;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,212,255,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: #00d4ff;
+            color: #1a1a2e;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid #e9ecef;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: #00d4ff;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #1a1a2e;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+            background: #f4f4f4;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-info h3 {
+            color: #1a1a2e;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: #00d4ff;
+            color: #1a1a2e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            color: #1a1a2e;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            color: white;
+        }
+
+        .about-image .icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact > .container > p {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .contact-card .icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-card a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+
+        .contact-card a:hover {
+            text-decoration: underline;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 1000;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(37,211,102,0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: #0a0a1a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        footer p {
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">Tech Drive <span>Computers Ltd</span></div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">☰</div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Your Trusted <span>Tech Experts</span></h1>
+            <p>Professional computer repair, laptop fixes, virus removal & quality sales.<br>Fast, reliable, and affordable service you can count on.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/254793474156" class="btn btn-primary" target="_blank">
+                    📱 Chat on WhatsApp
+                </a>
+                <a href="#services" class="btn btn-secondary">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+                <p>We offer a comprehensive range of computer services to keep your tech running smoothly</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Laptop Repairs</h3>
+                    <p>Screen replacements, keyboard fixes, battery issues, overheating problems, and hardware upgrades for all major brands.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🖥️</div>
+                    <h3>Computer Repairs</h3>
+                    <p>Desktop troubleshooting, power supply issues, motherboard repairs, RAM upgrades, and custom PC builds.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🛡️</div>
+                    <h3>Virus Removal</h3>
+                    <p>Complete malware, spyware, and virus removal. We secure your system and install reliable antivirus protection.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Software Installation</h3>
+                    <p>Operating system installation, driver updates, office suites, and essential software setup and configuration.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💾</div>
+                    <h3>Data Recovery</h3>
+                    <p>Recover lost files, photos, and documents from damaged hard drives, corrupted systems, or accidental deletion.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Hardware Upgrades</h3>
+                    <p>SSD upgrades, RAM expansion, graphics card installation, and performance optimization for faster computing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Products for Sale</h2>
+                <p>Quality refurbished and new laptops & desktops at competitive prices</p>
+            </div>
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">💻</div>
+                    <div class="product-info">
+                        <h3>Refurbished Laptops</h3>
+                        <p>Thoroughly tested and certified laptops from top brands like Dell, HP, Lenovo, and Acer. Great performance at budget-friendly prices.</p>
+                        <span class="price-tag">From Ksh10000</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🖥️</div>
+                    <div class="product-info">
+                        <h3>Desktop Computers</h3>
+                        <p>Reliable desktop towers and all-in-one PCs for home and office use. Custom builds available upon request.</p>
+                        <span class="price-tag">From ksh6000</span>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <div class="product-image">🔌</div>
+                    <div class="product-info">
+                        <h3>Accessories & Parts</h3>
+                        <p>Chargers, cables, RAM, hard drives, keyboards, mice, and other essential computer accessories and spare parts.</p>
+                        <span class="price-tag">From ksh1000</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Why Choose Tech Drive Computers?</h2>
+                    <p>At Tech Drive Computers Ltd, we pride ourselves on delivering exceptional technical support and quality products to our community. With years of hands-on experience, our skilled technicians handle everything from simple software fixes to complex hardware repairs.</p>
+                    <p>We believe in honest pricing, transparent service, and building lasting relationships with our customers. Whether you need an urgent repair or are looking for a reliable refurbished laptop, we've got you covered.</p>
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Repairs Completed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-label">Customer Satisfaction</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Same Day</div>
+                            <div class="stat-label">Service Available</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="icon">🔧</div>
+                    <h3>Expert Technicians</h3>
+                    <p>Certified professionals ready to solve your tech problems</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get In Touch</h2>
+            <p>Have a question or need a repair? Reach out to us anytime!</p>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="icon">📱</div>
+                    <h3>WhatsApp</h3>
+                    <a href="https://wa.me/254793474156" target="_blank">07934 741 56</a>
+                    <p style="margin-top: 0.5rem; font-size: 0.9rem; opacity: 0.8;">Fastest response time</p>
+                </div>
+                <div class="contact-card">
+                    <div class="icon">📧</div>
+                    <h3>Email</h3>
+                    <a href="mailto:wakoliernest58@gmail.com">wakoliernest58@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <div class="icon">🕐</div>
+                    <h3>Working Hours</h3>
+                    <p>Mon - Sat: 9:00 AM - 6:00 PM</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/254793474156" class="whatsapp-float" target="_blank" title="Chat on WhatsApp">
+        💬
+    </a>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p> Tech Drive Computers Ltd. All rights reserved. | Professional Computer Repair & Sales</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(26, 26, 46, 0.95)';
+                header.style.backdropFilter = 'blur(10px)';
+            } else {
+                header.style.background = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)';
+                header.style.backdropFilter = 'none';
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', () => {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.background = '#1a1a2e';
+            navLinks.style.padding = '1rem';
+        });
+    </script>
+
+</body>
+</html>
